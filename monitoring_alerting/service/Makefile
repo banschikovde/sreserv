@@ -1,7 +1,7 @@
 TARGET              := elementary-cacher
 DOCKER_IMAGE_NAME   := elementary-cacher
 GO                  := go
-GIT_SUMMARY         := $(shell git describe --tags --always 2>/dev/null)
+GIT_SUMMARY         := initial
 
 build:
 	@echo ">> building binary..."
@@ -13,3 +13,13 @@ docker: Dockerfile
 	@echo "docker build -t $(DOCKER_IMAGE_NAME):$(GIT_SUMMARY) ."
 	@docker build -t $(DOCKER_IMAGE_NAME):$(GIT_SUMMARY) .
 
+docker-push:
+	@echo ">> docker login..."
+	@echo ">> docker login -u vlamug"
+	@docker login -u vlamug
+	@echo ">> docker tag..."
+	@echo ">> docker tag $(DOCKER_IMAGE_NAME):$(GIT_SUMMARY) vlamug/$(DOCKER_IMAGE_NAME):$(GIT_SUMMARY)"
+	@docker tag $(DOCKER_IMAGE_NAME):$(GIT_SUMMARY) vlamug/$(DOCKER_IMAGE_NAME):$(GIT_SUMMARY)
+	@echo ">> docker push..."
+	@echo ">> docker push vlamug/$(DOCKER_IMAGE_NAME):$(GIT_SUMMARY)"
+	@docker push vlamug/$(DOCKER_IMAGE_NAME):$(GIT_SUMMARY)
