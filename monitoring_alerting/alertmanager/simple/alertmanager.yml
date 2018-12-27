@@ -1,0 +1,13 @@
+global:
+  resolve_timeout: 5m
+  # slack_api_url:
+  # pagerduty_url:
+  # opsgenie_api_url:
+  # ...
+  http_config:
+
+templates:
+route:
+receivers:
+inhibit_rules:
+
