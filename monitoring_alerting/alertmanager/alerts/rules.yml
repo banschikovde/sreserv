@@ -1,0 +1,11 @@
+groups:
+- name: elementary_cacher
+  rules:
+  - alert: high_request_duration
+    expr: histogram_quantile(0.95, cacher_request_duration_seconds_bucket{}) > 500
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: 'High request duration.'
+      description: 'The handler {{ $labels.handler }} has high request duration: {{ $value }}ms.'
