@@ -12,10 +12,10 @@ scrape_configs:
   - targets: ['elementary_cacher:9092']
 
 alerting:
-  alertmanager:
-  - scheme: https
+  alertmanagers:
+  - scheme: http
     static_configs:
-    - targets:
-      - "alertmanager:9093"
+    - targets: ['alertmanager:9093']
+
 remote_write:
 remote_read:
