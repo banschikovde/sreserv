@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
+  external_labels:
+
+rule_files:
+
+scrape_configs:
+- job_name: 'elementary_caher'
+  static_configs:
+  - targets: ['elementary_cacher:9092']
+
+alerting:
+  alertmanager:
+  - scheme: https
+    static_configs:
+    - targets:
+      - "alertmanager:9093"
+remote_write:
+remote_read:
