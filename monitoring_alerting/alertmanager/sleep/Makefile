@@ -1,7 +1,7 @@
 TARGET              := elementary-cacher
 DOCKER_IMAGE_NAME   := elementary-cacher
 GO                  := go
-GIT_SUMMARY         := metrics
+GIT_SUMMARY         := sleep
 
 build:
 	@echo ">> building binary..."
