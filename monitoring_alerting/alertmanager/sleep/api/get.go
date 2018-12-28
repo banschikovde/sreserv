@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/vlamug/elementary-cacher/cache"
 	internalhttp "github.com/vlamug/elementary-cacher/pkg/http"
@@ -11,6 +12,11 @@ import (
 // GetHandler is a handler for loading data from cache.
 func GetHandler(cacher cache.Cache) func(rw http.ResponseWriter, r *http.Request) {
 	return func(rw http.ResponseWriter, r *http.Request) {
+		/// if it is sleeping time, sleep 1 second
+		if isSleepingTime {
+			time.Sleep(time.Second)
+		}
+
 		if r.Method != http.MethodPost {
 			internalhttp.SendResponse(rw, GetResponse{Status: errorStatus, Message: "only POST requests are allowed"})
 			return

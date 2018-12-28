@@ -29,7 +29,7 @@ func GetHandler(cacher cache.Cache) func(rw http.ResponseWriter, r *http.Request
 			return
 		}
 
-		internalhttp.SendResponse(rw, GetResponse{Status: errorStatus, Data: value})
+		internalhttp.SendResponse(rw, GetResponse{Status: successStatus, Data: value})
 	}
 }
 
