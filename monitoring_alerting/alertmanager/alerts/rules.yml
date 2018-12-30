@@ -2,7 +2,7 @@ groups:
 - name: elementary_cacher
   rules:
   - alert: high_request_duration
-    expr: histogram_quantile(0.95, cacher_request_duration_seconds_bucket{}) > 500
+    expr: histogram_quantile(0.95, cacher_request_duration_seconds_bucket{}) > 0.5
     for: 5m
     labels:
       severity: critical
