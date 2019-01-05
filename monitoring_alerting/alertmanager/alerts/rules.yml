@@ -5,6 +5,9 @@ groups:
     expr: histogram_quantile(0.95, cacher_request_duration_seconds_bucket{}) > 0.5
     for: 5m
     labels:
+      system: service
+      team: sreserv_team
+      service: elementary_cacher
       severity: critical
     annotations:
       summary: 'High request duration.'

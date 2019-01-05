@@ -1,0 +1,29 @@
+global:
+  resolve_timeout: 5m
+
+
+route:
+  group_by: ['alertname', 'job', 'service']
+  group_wait: 30s
+  group_interval: 1m
+  repeat_interval: 4h
+
+  routes:
+  - receiver: opsgenie
+    match:
+      system: service
+
+receivers:
+- name: 'opsgenie'
+  opsgenie_configs:
+  - api_key: 32453887-869a-4063-b349-bc75c82ca7f6
+    tags: '{{ .CommonAnnotations.tags }}'
+    message: '{{ .CommonAnnotations.summary }}'
+    description: '{{ .CommonAnnotations.description }}'
+    details:
+      alertname: '{{ .CommonLabels.alertname }}'
+      severity: '{{ .CommonLabels.severity }}'
+      system: '{{ .CommonLabels.system }}'
+      service: '{{ .CommonLabels.service }}'
+      team: '{{ .CommonLabels.team }}'
+
