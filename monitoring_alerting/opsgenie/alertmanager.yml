@@ -8,6 +8,8 @@ route:
   group_interval: 1m
   repeat_interval: 4h
 
+  receiver: opsgenie
+
   routes:
   - receiver: opsgenie
     match:
@@ -16,7 +18,7 @@ route:
 receivers:
 - name: 'opsgenie'
   opsgenie_configs:
-  - api_key: 32453887-869a-4063-b349-bc75c82ca7f6
+  - api_key: '32453887-869a-4063-b349-bc75c82ca7f6'
     tags: '{{ .CommonAnnotations.tags }}'
     message: '{{ .CommonAnnotations.summary }}'
     description: '{{ .CommonAnnotations.description }}'
