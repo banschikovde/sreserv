@@ -10,7 +10,7 @@ rule_files:
 scrape_configs:
 - job_name: 'elementary_caher'
   static_configs:
-  - targets: ['elementary_cacher:9092']
+  - targets: ['elementary_cacher:9071']
 
 alerting:
   alertmanagers:
