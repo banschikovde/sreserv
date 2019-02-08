@@ -18,7 +18,7 @@ func MetricsMiddleware(handler string, next http.HandlerFunc) http.HandlerFunc {
 		// serve request
 		next.ServeHTTP(w, r)
 
-		// observer request duration
+		// observe request duration
 		sinceSeconds := float64(time.Since(started)) / float64(time.Second)
 		metrics.RequestDurationSeconds.WithLabelValues(handler).Observe(sinceSeconds)
 	})
