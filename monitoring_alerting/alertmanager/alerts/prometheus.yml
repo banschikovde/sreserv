@@ -13,10 +13,5 @@ scrape_configs:
   - targets: ['elementary_cacher:9071']
 
 alerting:
-  alertmanagers:
-  - scheme: http
-    static_configs:
-    - targets: ['alertmanager:9093']
-
 remote_write:
 remote_read:
